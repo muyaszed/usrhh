@@ -1,21 +1,48 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
+import LoginForm from './components/LoginForm'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <Router>
+    <div>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/create-room">Create Room</Link></li>
+        <li><Link to="/find-room">Find Room</Link></li>
+      </ul>
 
-export default App;
+      <hr/>
+
+      <Route exact path="/" component={Home}/>
+      <Route path="/create-room" component={CreateRoom}/>
+      <Route path="/find-room" component={FindRoom}/>
+    </div>
+  </Router>
+)
+
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+    <LoginForm />
+  </div>
+)
+
+const CreateRoom = () => (
+  <div>
+    <h2>Create Room</h2>
+  </div>
+)
+
+const FindRoom = () => (
+  <div>
+    <h2>Find Room</h2>
+    
+  </div>
+)
+
+
+export default App
